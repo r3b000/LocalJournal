@@ -1,0 +1,43 @@
+
+
+
+Cyan: #00cabc
+Red: #ca0600
+Green: #00b024
+Purple: #5b00b0
+Yellow: #cac000
+
+
+
+https://github.com/google/material-design-icons/blob/master/LICENSE
+https://iconify.design/
+
+
+icon_header("icons/accounts.png", "Trading Accounts", level="h1")
+
+
+icon_header("icons/prices.png", "Entry", level="h3")
+
+
+
+{danger_icon}
+
+
+[ ! ]
+
+[ OK ]
+
+[ X ]
+
+[ ✔ ]
+
+
+🟥
+
+🟩
+
+⬜
+
+
+
+

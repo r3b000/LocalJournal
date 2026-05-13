@@ -1,0 +1,67 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Local Data (user trading data — never commit this)
+LocalJournalData/
+LocalJournalBackups/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Logs
+logs/
+*.log
+
+# Screenshots (user data)
+screenshots/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+*.spec
+*.manifest
+
+# Distribution / Packaging
+*.tar.gz
+*.zip
+*.whl
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets / Environment
+.env
+.env.local
+*.pem
+*.key
+
+# OS
+desktop.ini
+ehthumbs.db
