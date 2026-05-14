@@ -4,7 +4,7 @@
 
 **A professional trading journal — 100% local, 100% private.**
 
-[![Version](https://img.shields.io/badge/version-1.0.0-7e3abe?style=for-the-badge)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.0.1-7e3abe?style=for-the-badge)](CHANGELOG.md)
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-ff4b4b?style=for-the-badge&logo=streamlit)](https://streamlit.io/)
