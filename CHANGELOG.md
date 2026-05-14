@@ -8,9 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.1] - 2026-05-14
 
 ### Fixed
-- Fixed database/data folder path detection so LocalJournal correctly resolves the user Desktop location across Windows, macOS, and Linux.
-- Fixed an issue where Windows systems using OneDrive Desktop redirection could create or detect the database in the wrong location.
+- Fixed database path detection so LocalJournal resolves the correct Desktop location across Windows, macOS, and Linux.
+- Fixed an issue where Windows systems using OneDrive Desktop redirection could create or detect the database in the wrong folder.
+- Improved reliability of create, import, export, and backup actions by using universal path resolution.
 
+### Notes
+- No database migration required.
+- Existing user data remains compatible.
 ## [1.0.0] - 2026-05-13
 
 ### Initial Release
