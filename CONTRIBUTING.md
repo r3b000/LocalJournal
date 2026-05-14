@@ -1,303 +1,311 @@
 # Contributing to LocalJournal
 
-Thank you for your interest in contributing to LocalJournal! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to LocalJournal.
+
+LocalJournal uses a **maintainer-approved contribution model**. The repository is public so anyone can view it, clone it, and fork it, but changes to the official project are reviewed and accepted only when they align with the maintainer's direction.
 
 ## Table of Contents
 
 - [Code of Conduct](#code-of-conduct)
-- [How Can I Contribute?](#how-can-i-contribute)
+- [How to Contribute](#how-to-contribute)
+- [Approval Policy](#approval-policy)
 - [Development Setup](#development-setup)
 - [Coding Standards](#coding-standards)
 - [Commit Guidelines](#commit-guidelines)
 - [Pull Request Process](#pull-request-process)
+- [Development Tips](#development-tips)
+- [Questions](#questions)
+- [License](#license)
 
----
+***
 
 ## Code of Conduct
 
 ### Our Standards
 
-- Be respectful and inclusive
-- Accept constructive criticism gracefully
-- Focus on what is best for the community
-- Show empathy towards other community members
+- Be respectful and inclusive.
+- Accept constructive criticism professionally.
+- Focus on what improves the project.
+- Show patience and empathy in discussion.
 
 ### Unacceptable Behavior
 
-- Harassment, discrimination, or offensive comments
-- Trolling or insulting/derogatory comments
-- Publishing others' private information without permission
-- Other conduct which could reasonably be considered inappropriate
+- Harassment, discrimination, or abusive language.
+- Trolling, hostility, or repeated bad-faith arguments.
+- Publishing another person's private information without permission.
+- Any conduct that would reasonably make collaboration unsafe or unproductive.
 
----
+***
 
-## How Can I Contribute?
+## How to Contribute
 
-### Reporting Bugs
+### Report Bugs
 
-Before creating bug reports, please check existing issues to avoid duplicates.
+Bug reports are welcome.
 
-**Bug Report Should Include:**
-- Clear and descriptive title
-- Steps to reproduce the issue
-- Expected behavior vs actual behavior
-- Screenshots or error messages if applicable
-- Environment details:
-  - OS version
-  - Python version
-  - LocalJournal version
+Before opening a new issue, check existing issues to avoid duplicates.
 
-### Suggesting Enhancements
+A good bug report should include:
 
-Enhancement suggestions are tracked as GitHub issues.
+- A clear and descriptive title.
+- Steps to reproduce the issue.
+- Expected behavior and actual behavior.
+- Screenshots, logs, or error messages when relevant.
+- Environment details, including OS version, Python version, and LocalJournal version.
 
-**Enhancement Suggestion Should Include:**
-- Clear and descriptive title
-- Detailed description of the proposed feature
-- Explanation of why this enhancement would be useful
-- Possible implementation approach (optional)
+### Suggest Enhancements
+
+Enhancement ideas are also welcome through issues.
+
+A good enhancement request should include:
+
+- A clear and descriptive title.
+- A detailed description of the idea.
+- Why the change would be useful.
+- A possible implementation direction, if you have one.
 
 ### Code Contributions
 
-1. Fork the repository
-2. Create a feature branch from `main`
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+Code contributions are **not** accepted as open, unsolicited pull requests.
 
----
+If you want to contribute code to the official repository, start by opening an issue or contacting the maintainer for approval first.
+
+***
+
+## Approval Policy
+
+### What does not require approval
+
+You may do the following without asking first:
+
+- Clone the repository for personal use.
+- Fork the repository for private experimentation.
+- Open issues for bugs, questions, or enhancement ideas.
+- Review the code and documentation for learning purposes.
+
+### What requires approval first
+
+You must get maintainer approval before:
+
+- Opening a pull request intended for the official repository.
+- Starting feature work for the official roadmap.
+- Requesting collaborator or write access.
+- Making changes that affect database structure, migrations, backups, data storage paths, or release workflow.
+
+### Why this policy exists
+
+LocalJournal is maintained with a specific product direction, release flow, and data-safety model. Approval-first contributions help keep the project consistent, easier to review, and safer for users who depend on local data handling.
+
+***
 
 ## Development Setup
 
 ### Prerequisites
 
-- Python 3.11 or higher
+- Python
 - Git
-- Virtual environment tool
+- A virtual environment tool
 
 ### Setup Steps
 
-**1. Clone your fork**
+**1. Clone the repository**
+
 ```bash
 git clone https://github.com/YOUR-USERNAME/LocalJournal.git
 cd LocalJournal
 ```
 
-**2. Create virtual environment**
+**2. Create a virtual environment**
+
 ```bash
-py -3.11 -m venv .venv
-# Activate on Windows:
+python -m venv .venv
+```
+
+**3. Activate the virtual environment**
+
+On Windows CMD:
+
+```bat
 .venv\Scripts\activate
 ```
 
-**3. Install dependencies**
+On macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+**4. Install dependencies**
+
 ```bash
 pip install -r requirements.txt
 ```
 
-**4. Run the application**
+**5. Run the application**
+
 ```bash
 streamlit run app.py
 ```
 
 ### Project Structure
 
-```
+```text
 LocalJournal/
-├── app.py              # Main entry point
-├── components/         # Reusable UI components
-├── config/             # Configuration and constants
-├── database/           # Database operations
-├── pages/              # Streamlit pages
-└── utils/              # Utility functions
+├── app.py
+├── runapp.py
+├── components/
+├── config/
+├── database/
+├── databasemigrations/
+├── Pages/
+├── utils/
+├── assets/
+└── icons/
 ```
 
----
+***
 
 ## Coding Standards
 
 ### Python Style Guide
 
-- Follow [PEP 8](https://peps.python.org/pep-0008/) style guide
-- Use meaningful variable and function names
-- Maximum line length: **100 characters**
-- Use type hints where appropriate
-- Write docstrings for functions and classes
+- Follow PEP 8.
+- Use clear variable and function names.
+- Keep changes focused and readable.
+- Use type hints where they improve clarity.
+- Write docstrings for important functions and classes.
+- Avoid unrelated refactors in the same pull request.
 
-**Example:**
-```python
-def calculate_position_size(
-    account_equity: float,
-    risk_percentage: float,
-    entry_price: float,
-    stop_loss: float,
-    direction: str
-) -> float:
-    """
-    Calculate position size based on risk parameters.
+### Database Work
 
-    Args:
-        account_equity: Total account equity
-        risk_percentage: Risk percentage per trade
-        entry_price: Entry price for the trade
-        stop_loss: Stop loss price
-        direction: Trade direction ('LONG' or 'SHORT')
+- Use parameterized queries.
+- Use proper error handling.
+- Use context managers for database connections.
+- Add logging where operational changes matter.
+- Test schema and migration changes on a copy of production data.
 
-    Returns:
-        Position size in units
-    """
-    # Implementation
-    pass
-```
+### UI and App Structure
 
-### Database Operations
+- Reuse existing components where possible.
+- Keep naming consistent with the current project layout.
+- Validate user input before saving or processing data.
+- Preserve LocalJournal's local-first and privacy-first behavior.
 
-- Use parameterized queries to prevent SQL injection
-- Implement proper error handling
-- Use context managers for database connections
-- Add logging for important operations
-
-### UI Components
-
-- Keep components modular and reusable
-- Use consistent naming conventions
-- Add helpful placeholder text and tooltips
-- Validate user inputs before processing
-
----
+***
 
 ## Commit Guidelines
 
-### Commit Message Format
+### Preferred Format
 
-```
+```text
 type(scope): subject
-
-body
-
-footer
 ```
 
-### Types
+### Common Types
 
-| Type | Description |
+| Type | Use for |
 |---|---|
 | `feat` | New feature |
 | `fix` | Bug fix |
 | `docs` | Documentation changes |
-| `style` | Code style changes (formatting, no logic change) |
-| `refactor` | Code refactoring |
+| `refactor` | Internal code restructuring |
 | `test` | Adding or updating tests |
-| `chore` | Maintenance tasks |
+| `chore` | Maintenance work |
 
 ### Examples
 
-```
-feat(trades): add multi-exit support for partial closes
-
-Implement functionality to handle multiple exit prices and
-allocations for scaling out of positions.
-
-Closes #42
+```text
+feat(trades): add partial-close validation
 ```
 
-```
-fix(database): correct equity calculation in statistics query
-
-The equity curve was calculating cumulative PnL incorrectly
-when trades had NULL values. Added COALESCE to handle nulls.
-
-Fixes #38
+```text
+fix(statistics): correct equity curve null handling
 ```
 
----
+```text
+docs(readme): clarify local-only data storage
+```
+
+***
 
 ## Pull Request Process
 
-### Before Submitting
+### Before Opening a Pull Request
 
-1. Ensure your code follows the coding standards
-2. Update documentation if needed
-3. Add or update tests for your changes
-4. Test thoroughly on your local machine
-5. Update `CHANGELOG.md` with your changes
+1. Get maintainer approval first.
+2. Make sure the work matches the agreed scope.
+3. Test the change locally.
+4. Update documentation when needed.
+5. Update `CHANGELOG.md` when the change affects users or releases.
 
-### Pull Request Template
+### Approved Contribution Flow
 
-```markdown
-## Description
-Clear description of what this PR does.
+1. Open or reference the issue that was approved.
+2. Create a branch from the latest `main`.
+3. Make focused commits.
+4. Test thoroughly.
+5. Open the pull request with a clear description.
 
-## Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
+### Pull Request Expectations
 
-## Testing
-Describe the tests you ran and their results.
+An approved pull request should include:
 
-## Checklist
-- [ ] Code follows project style guidelines
-- [ ] Self-review completed
-- [ ] Comments added for complex code
-- [ ] Documentation updated
-- [ ] No new warnings generated
-- [ ] Tests added/updated and passing
-```
+- A short explanation of the change.
+- Why the change is needed.
+- Testing notes.
+- Documentation updates, if any.
+- Migration or release impact, if any.
 
 ### Review Process
 
-1. At least one maintainer must review the PR
-2. All discussions must be resolved
-3. All CI checks must pass
-4. Maintainer will merge when approved
+- The maintainer reviews all official pull requests.
+- Feedback and discussion must be resolved before merge.
+- Approval does not guarantee merge if the implementation changes scope or quality expectations.
+- Unapproved pull requests may be closed or declined.
 
----
+***
 
 ## Development Tips
 
 ### Testing Your Changes
 
 ```bash
-# Run the test suite
-python test_localjournal_comprehensive.py
-
-# Test specific functionality
+python testlocaljournalcomprehensive.py
 streamlit run app.py
 ```
 
 ### Database Changes
 
-If you modify the database schema:
-1. Update `database/schema.py`
-2. Create migration script in `database/migrations/`
-3. Test migration on a **copy** of the production database
-4. Document the changes in `CHANGELOG.md`
+If you modify database behavior:
+
+1. Update the relevant files in `database/`.
+2. Add or update the migration script in `databasemigrations/` when required.
+3. Test the migration on a copy of the database.
+4. Document the change in `CHANGELOG.md`.
 
 ### Adding New Pages
 
-1. Create file in `pages/` directory: `X_PageName.py`
-2. Follow existing page structure
-3. Use reusable components from `components/`
-4. Add appropriate error handling
-5. Test with different account states
+1. Follow the existing structure inside `Pages/`.
+2. Reuse components from `components/` where possible.
+3. Handle empty states, validation, and errors cleanly.
+4. Test with realistic account and trade data.
 
----
+***
 
-## Questions?
+## Questions
 
-If you have questions about contributing, please:
-1. Check existing documentation
-2. Search through issues
-3. Open a new issue with the `question` label
+For contribution questions:
 
----
+1. Check the existing documentation.
+2. Search existing issues.
+3. Open a new issue if the answer is not already available.
+
+***
 
 ## License
 
-By contributing to LocalJournal, you agree that your contributions will be licensed under the **MIT License**.
+By contributing approved changes to LocalJournal, you agree that your contributions will be licensed under the project's license.
 
----
+***
 
-*Thank you for contributing to LocalJournal! Your efforts help make this project better for everyone.* 🙏
+*Thank you for supporting LocalJournal.*

@@ -204,13 +204,15 @@ Desktop/
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a pull request.
+LocalJournal is public for viewing, cloning, and personal use.
 
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feat/your-feature`
-3. Commit your changes: `git commit -m "feat: add your feature"`
-4. Push to the branch: `git push origin feat/your-feature`
-5. Open a Pull Request
+Direct contributions to the official repository are maintainer-controlled.  
+If you want to contribute, please contact the maintainer first and ask for approval before opening a pull request or requesting collaborator access.
+
+Unapproved pull requests may be declined.
+
+For full contribution rules, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 
 ---
 
